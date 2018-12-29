@@ -18,13 +18,13 @@ altMask = mod1Mask
 main :: IO ()
 main = xmonad $ ewmh myConfig
 
-myConfig = def { modMask             = mod4Mask
+myConfig = def { modMask             = mod1Mask
                , terminal            = "urxvt"
                , focusedBorderColor  = "#7cafc2"
                , normalBorderColor   = "#181818"
                , focusFollowsMouse   = True
                --, manageHook          = composeOne [ className =? "pocket" -?> doCenterFloat ] -- placeHook (inBounds (underMouse (0, 0))) <+> manageHook def
-               , layoutHook          = showWName $ smartSpacing 8 emptyBSP
+               , layoutHook          = showWName $ spacingRaw True (Border 4 4 4 4) True (Border 4 4 4 4) True $ emptyBSP
                , keys                = keyBindings <+> keys def
                }
 
@@ -43,6 +43,8 @@ keyBindings conf@(XConfig {XMonad.modMask = modm}) =
              , ((0, xF86XK_MonBrightnessUp),    spawn "xbacklight -inc 10")
              , ((0, xF86XK_MonBrightnessDown),  spawn "xbacklight -dec 10")
 
+             , ((modm, xF86XK_Sleep),           spawn "systemctl hibernate")
+             
              , ((0, xK_Scroll_Lock),            spawn "lockscreen")
              , ((0, xK_Print),                  spawn "gnome-screenshot")
              , ((modm, xK_space),               spawn "rofi -show drun -matching fuzzy -levenshtein-sort")

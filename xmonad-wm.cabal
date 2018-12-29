@@ -1,13 +1,13 @@
 name:                xmonad-wm
 version:             0.1.0.0
-synopsis:            Simple project template from stack
+synopsis:            Paul Samways' XMonad configuration
 description:         Please see README.md
-homepage:            https://github.com/githubuser/xmonad-wm#readme
+homepage:            https://github.com/paulsamways/xmonad-wm#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2016 Author name here
+author:              Paul Samways
+maintainer:          paul@paulsamways.com
+copyright:           2016 Paul Samways
 category:            Web
 build-type:          Simple
 cabal-version:       >=1.10
@@ -19,6 +19,6 @@ executable xmonad
   ghc-options:         -fwarn-tabs -O2 -threaded -rtsopts -with-rtsopts=-N 
   build-depends:       base >= 4.7 && < 5
                      , containers
-                     , xmonad
-                     , xmonad-contrib
+                     , xmonad >= 0.15
+                     , xmonad-contrib >= 0.15
                      , X11
